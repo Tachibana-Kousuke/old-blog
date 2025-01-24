@@ -20,7 +20,7 @@ layout: default
                 col-lg-8 col-lg-offset-2
                 col-md-10 col-md-offset-1 ">
 
-                                {{ content }}
+                {{ content }}
 
                 <hr style="visibility: hidden;">
                 <ul class="pager">
@@ -46,9 +46,7 @@ layout: default
                 {% if site.disqus_username %}
                 <!-- disqus 评论框 start -->
                 <div class="comment">
-                    <div id="disqus_thread" class="disqus-thread">
-                    
-                    </div>
+                    <div id="disqus_thread" class="disqus-thread"></div>
                 </div>
                 <!-- disqus 评论框 end -->
                 {% endif %}
@@ -56,9 +54,7 @@ layout: default
             </div>
 
             <!-- Sidebar Container -->
-            <div class="sidebar-container
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1 ">
+            <div class="sidebar-container col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
                 <!-- Featured Tags -->
                 {% include featured-tags.html %}
@@ -70,7 +66,6 @@ layout: default
                 <div class="latest-release">
                     <h3>Latest Release</h3>
                     <!-- Bilibili Video Embed -->
-                    <!-- 这是你提供的视频 BV ID（BV1asqLYaE1i） -->
                     <iframe src="https://player.bilibili.com/player.html?bvid=BV1asqLYaE1i" width="100%" height="315" frameborder="0" allowfullscreen="true"></iframe>
                 </div>
 
@@ -83,11 +78,6 @@ layout: default
 <script>
     var $header = document.getElementsByTagName("header")[0];
     function resize(){
-        /*
-         * leave 85px to both
-         * - told/imply users that there has more content below
-         * - let user can scroll in mobile device, seeing the keynote-view is unscrollable
-         */
         $header.style.height = (window.innerHeight-85) + 'px';
     }
     document.addEventListener('DOMContentLoaded', function(){
@@ -101,7 +91,6 @@ layout: default
     })
     resize();
 </script>
-
 
 {% if site.disqus_username %}
 <script src="https://giscus.app/client.js"
@@ -154,6 +143,28 @@ layout: default
             font-size: 1.1em;
             margin-top : -0.1em;
         }
+    }
+
+    /* Latest Release section styling */
+    .latest-release {
+        background-color: #f9f9f9;
+        padding: 15px;
+        margin-top: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .latest-release iframe {
+        width: 100%;
+        height: 315px;  /* Adjust height if needed */
+        border: none;
+        border-radius: 8px;
+    }
+
+    .latest-release h3 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+        font-weight: bold;
     }
 </style>
 {% endif %}
