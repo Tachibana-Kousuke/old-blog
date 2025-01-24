@@ -4,22 +4,21 @@
  * Licensed under Apache 2.0 (https://github.com/IronSummitMedia/startbootstrap/blob/gh-pages/LICENSE)
  */
 
- /*!
- * Hux Blog v1.6.0 (http://startbootstrap.com)
- * Copyright 2016 @huxpro
+/*!
+ * Tata Blog v1.6.0 (http://startbootstrap.com)
+ * Copyright 2024-2025 Tata Blog
  * Licensed under Apache 2.0 
  */
 
 // Tooltip Init
-// Unuse by Hux since V1.6: Titles now display by default so there is no need for tooltip
+// Unuse by Tata since V1.6: Titles now display by default so there is no need for tooltip
 // $(function() {
 //     $("[data-toggle='tooltip']").tooltip();
 // });
 
-
 // make all images responsive
 /* 
- * Unuse by Hux
+ * Unuse by Tata
  * actually only Portfolio-Pages can't use it and only post-img need it.
  * so I modify the _layout/post and CSS to make post-img responsive!
  */
@@ -46,39 +45,40 @@ jQuery(document).ready(function($) {
     var MQL = 1170;
 
     //primary navigation slide-in effect
-    if ($(window).width() > MQL) {
-        var headerHeight = $('.navbar-custom').height(),
-            bannerHeight  = $('.intro-header .container').height();     
-        $(window).on('scroll', {
-                previousTop: 0
-            },
-            function() {
-                var currentTop = $(window).scrollTop(),
-                    $catalog = $('.side-catalog');
+    var headerHeight = $('.navbar-custom').height(),
+        bannerHeight  = $('.intro-header .container').height();     
+    $(window).on('scroll', {
+            previousTop: 0
+        },
+        function() {
+            var currentTop = $(window).scrollTop(),
+                $catalog = $('.side-catalog');
 
-                //check if user is scrolling up by mouse or keyborad
-                if (currentTop < this.previousTop) {
-                    //if scrolling up...
-                    if (currentTop > 0 && $('.navbar-custom').hasClass('is-fixed')) {
-                        $('.navbar-custom').addClass('is-visible');
-                    } else {
-                        $('.navbar-custom').removeClass('is-visible is-fixed');
-                    }
+            //check if user is scrolling up by mouse or keyboard
+            if (currentTop < this.previousTop) {
+                //if scrolling up...
+                if (currentTop > 0 && $('.navbar-custom').hasClass('is-fixed')) {
+                    $('.navbar-custom').addClass('is-visible');
                 } else {
-                    //if scrolling down...
-                    $('.navbar-custom').removeClass('is-visible');
-                    if (currentTop > headerHeight && !$('.navbar-custom').hasClass('is-fixed')) $('.navbar-custom').addClass('is-fixed');
+                    $('.navbar-custom').removeClass('is-visible is-fixed');
                 }
-                this.previousTop = currentTop;
-
-
-                //adjust the appearance of side-catalog
-                $catalog.show()
-                if (currentTop > (bannerHeight + 41)) {
-                    $catalog.addClass('fixed')
-                } else {
-                    $catalog.removeClass('fixed')
+            } else {
+                //if scrolling down...
+                $('.navbar-custom').removeClass('is-visible');
+                if (currentTop > headerHeight && !$('.navbar-custom').hasClass('is-fixed')) {
+                    $('.navbar-custom').addClass('is-fixed');
                 }
-            });
-    }
+            }
+            this.previousTop = currentTop;
+
+            // Adjust the appearance of side-catalog
+            $catalog.show(); // Ensure the catalog is shown during scroll
+            if (currentTop > (bannerHeight + 41)) {
+                // If scrolling past the banner, make the side catalog fixed
+                $catalog.addClass('fixed');
+            } else {
+                // Otherwise, remove the fixed class
+                $catalog.removeClass('fixed');
+            }
+        });
 });
