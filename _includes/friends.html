@@ -9,8 +9,16 @@
 {% endif %}
 
 <!-- 最新发布视频：Bilibili 视频嵌入 -->
-<div class="latest-release" style="margin-top: 20px; padding: 10px; border: 1px solid #ddd;">
+<div class="latest-release" style="margin-top: 20px;">
     <h3>Latest Release</h3>
     <!-- 这里是你提供的视频，BV ID：BV1asqLYaE1i -->
-    <iframe src="https://player.bilibili.com/player.html?bvid=BV1asqLYaE1i" width="100%" height="315" frameborder="0" allowfullscreen="true" style="border: none;"></iframe>
+    <div class="video-container" style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=113611934532084&bvid=BV1asqLYaE1i&cid=27228703342&p=1" 
+                scrolling="no" 
+                border="0" 
+                frameborder="no" 
+                framespacing="0" 
+                allowfullscreen="true" 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+    </div>
 </div>
