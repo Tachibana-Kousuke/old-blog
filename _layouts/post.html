@@ -15,10 +15,7 @@ layout: default
         <div class="row">
 
     <!-- Post Container -->
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                post-container">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-container">
 
                 <!-- Multi-Lingual -->
                 {% if page.multilingual %}
@@ -65,11 +62,7 @@ layout: default
 
     <!-- Side Catalog Container -->
         {% unless page.no-catalog %}
-            <div class="
-                col-lg-2 col-lg-offset-0
-                visible-lg-block
-                sidebar-container
-                catalog-container">
+            <div class="col-lg-2 col-lg-offset-0 visible-lg-block sidebar-container catalog-container">
                 <div class="side-catalog">
                     <hr class="hidden-sm hidden-xs">
                     <h5>
@@ -81,10 +74,7 @@ layout: default
         {% endunless %}
 
     <!-- Sidebar Container -->
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 sidebar-container">
 
                 <!-- Featured Tags -->
                 {% include featured-tags.html bottom=true %}
@@ -96,28 +86,19 @@ layout: default
     </div>
 </article>
 
-<!-- 硬编码引入 MathJax -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        TeX: {
-            equationNumbers: { autoNumber: "AMS" }
-        },
-        SVG: { scale: 90 },
-        tex2jax: {
-            inlineMath: [['$', '$']],   // 行内公式：$ ... $
-            displayMath: [['$$', '$$']], // 独立公式：$$ ... $$
-            processEscapes: true
-        }
-    });
-</script>
-<script type="text/javascript" 
-        src="https://unpkg.zhimg.com/mathjax@2.7.5/MathJax.js?config=TeX-AMS-MML_SVG">
-</script>
+<!-- 引入 KaTeX CSS 和 JS 用于渲染 LaTeX -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js"></script>
 
-<script type="text/javascript">
-    // 手动调用 MathJax 渲染公式
-    document.addEventListener('DOMContentLoaded', function () {
-        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false}
+            ]
+        });
     });
 </script>
 
