@@ -2,13 +2,8 @@
 layout: default
 ---
 
-<!-- Image to hack wechat -->
-<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
-
-<!-- Post Header -->
+<!-- Page Header -->
 {% include intro-header.html type='keynote' %}
-
 
 <!-- Post Content -->
 <article>
@@ -19,9 +14,8 @@ layout: default
             <div class="post-container
                 col-lg-8 col-lg-offset-2
                 col-md-10 col-md-offset-1 ">
-
                 {{ content }}
-
+                
                 <hr style="visibility: hidden;">
                 <ul class="pager">
                     {% if page.previous.url %}
@@ -50,32 +44,28 @@ layout: default
                 </div>
                 <!-- disqus 评论框 end -->
                 {% endif %}
-
             </div>
 
             <!-- Sidebar Container -->
-                <div class="sidebar-container col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="sidebar-container col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <!-- Featured Tags -->
+                {% include featured-tags.html %}
 
-                    <!-- Featured Tags -->
-                    {% include featured-tags.html %}
+                <!-- Friends Blog -->
+                {% include friends.html %}
 
-                    <!-- Friends Blog -->
-                    {% include friends.html %}
-
-                    <!-- Latest Release Section -->
-                    {% include latest-release.html %}
-
-                </div>
-             </div>
+                <!-- Latest Release Section -->
+                {% include latest-release.html %}
+            </div>
         </div>
     </div>
 </article>
 
-<!-- resize header to fullscreen keynotes -->
+<!-- Resize header to fullscreen keynotes -->
 <script>
     var $header = document.getElementsByTagName("header")[0];
     function resize(){
-        $header.style.height = (window.innerHeight-85) + 'px';
+        $header.style.height = (window.innerHeight - 85) + 'px';
     }
     document.addEventListener('DOMContentLoaded', function(){
         resize();
@@ -107,9 +97,8 @@ layout: default
 </script>
 {% endif %}
 
-
 {% if site.anchorjs %}
-<!-- async load function -->
+<!-- Async load function -->
 <script>
     function async(u, c) {
       var d = document, t = 'script',
@@ -120,7 +109,7 @@ layout: default
       s.parentNode.insertBefore(o, s);
     }
 </script>
-<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<!-- anchor-js, Doc: http://bryanbraun.github.io/anchorjs/ -->
 <script>
     async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
         anchors.options = {
@@ -131,14 +120,15 @@ layout: default
         anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
     })
 </script>
+
 <style>
-    /* place left on bigger screen */
+    /* Place left on bigger screen */
     @media all and (min-width: 800px) {
         .anchorjs-link{
             position: absolute;
             left: -0.75em;
             font-size: 1.1em;
-            margin-top : -0.1em;
+            margin-top: -0.1em;
         }
     }
 
@@ -164,4 +154,33 @@ layout: default
         font-weight: bold;
     }
 </style>
+
+{% endif %}
+
+{% if site.page-mathjax %}
+<!-- Add support for Mathjax by Voleking-->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true,
+    }
+  });
+</script>
+
+<!-- 国内镜像 MathJax 硬编码 -->
+<script type="text/javascript">
+  (function() {
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    document.head.appendChild(script);
+  })();
+</script>
 {% endif %}

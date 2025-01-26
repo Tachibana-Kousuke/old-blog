@@ -13,7 +13,7 @@ future: true
 
 # SNS settings
 RSS: false
-weibo_username: none
+weibo_username: Tachibana_Kousuke
 zhihu_username: none
 github_username: Tachibana-Kousuke
 twitter_username: none
@@ -49,6 +49,7 @@ plugins: [jekyll-paginate]
 # document: http://jekyllrb.com/docs/configuration/#kramdown
 markdown: kramdown
 kramdown:
+  math_engine: mathjax
   input: GFM # use Github Flavored Markdown !important
   syntax_highlighter_opts:
     span:
@@ -85,7 +86,7 @@ chrome-tab-theme-color: "#000000"
 service-worker: true
 
 # MathJax rendering for layout:page (e.g. post preview)
-page-mathjax: ture
+page-mathjax: true
 
 # Friends
 friends:

@@ -25,7 +25,7 @@ layout: default
                     {% include multilingual-sel.html %}
                 {% endif %}
 
-				{{ content }}
+                {{ content }}
 
                 <hr style="visibility: hidden;">
                 <ul class="pager">
@@ -96,10 +96,30 @@ layout: default
     </div>
 </article>
 
-<!-- add support for mathjax by voleking-->
-{% if page.mathjax %}
-  {% include mathjax_support.html %}
-{% endif %}
+<!-- 硬编码引入 MathJax -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        TeX: {
+            equationNumbers: { autoNumber: "AMS" }
+        },
+        SVG: { scale: 90 },
+        tex2jax: {
+            inlineMath: [['$', '$']],   // 行内公式：$ ... $
+            displayMath: [['$$', '$$']], // 独立公式：$$ ... $$
+            processEscapes: true
+        }
+    });
+</script>
+<script type="text/javascript" 
+        src="https://unpkg.zhimg.com/mathjax@2.7.5/MathJax.js?config=TeX-AMS-MML_SVG">
+</script>
+
+<script type="text/javascript">
+    // 手动调用 MathJax 渲染公式
+    document.addEventListener('DOMContentLoaded', function () {
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    });
+</script>
 
 {% if site.netease_comment %}
 <!-- 网易云跟帖JS代码 start -->
@@ -116,7 +136,6 @@ layout: default
 </script>
 <!-- 网易云跟帖JS代码 end -->
 {% endif %}
-
 
 {% if site.disqus_username %}
 <script src="https://giscus.app/client.js"
@@ -136,7 +155,6 @@ layout: default
 </script>
 {% endif %}
 
-
 {% if site.anchorjs %}
 <!-- async load function -->
 <script>
@@ -155,7 +173,6 @@ layout: default
         anchors.options = {
           visible: 'hover',
           placement: 'right',
-          // icon: '#'
         };
         anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
     })
