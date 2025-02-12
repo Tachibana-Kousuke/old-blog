@@ -96,3 +96,6 @@ latest-release:
   enabled: true # 是否显示最新发布区块
   bvid: "BV1asqLYaE1i" # 默认 Bilibili 视频的 BV ID
   title: "LATEST RELEASE" # 标题文本
+
+#定义代码块样式
+highlighter: rouge

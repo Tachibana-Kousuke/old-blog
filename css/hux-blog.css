@@ -306,7 +306,7 @@ button.paper-button {
   margin: 16px;
   border-radius: 2px;
 }
-.highlight,
+ .highlight,
 pre.highlight {
   background: #282c34;
   color: #abb2bf;
@@ -567,7 +567,7 @@ pre.highlight {
   .highlighter-rouge .highlight table > tbody > tr > td > pre {
     padding: 14px 10px;
   }
-}
+} 
 .search-page {
   position: fixed;
   top: 0;
@@ -1707,4 +1707,93 @@ img::-moz-selection {
   width: 100%;
   height: 315px;
   border-radius: 5px;
+}
+/*代码块*/
+pre,
+code {
+    font-family: 'JetBrains Mono', consolas, Menlo, monospace, 'PingFang SC', 'Microsoft YaHei'; /* 设置代码块和内联代码的字体 */
+    overflow-wrap: break-word; /* 防止代码过长时溢出 */
+}
+
+pre {
+    overflow: auto; /* 添加滚动条以防止代码块超出容器 */
+    padding: 10px; /* 设置代码块的内边距 */
+}
+
+figure.highlight {
+    border-radius: 5px; /* 设置高亮代码块的圆角 */
+    box-shadow: 0 10px 30px 0 rgba(0,0,0,0.4); /* 添加阴影效果 */
+    padding-top: 30px; /* 设置高亮代码块顶部的内边距 */
+}
+
+figure.highlight pre {
+    border: 0; /* 移除代码块的边框 */
+    margin: 0; /* 移除代码块的外边距 */
+    padding: 10px 0; /* 设置代码块的内边距 */
+}
+
+figure.highlight table {
+    border: 0; /* 移除代码块表格的边框 */
+    margin: 0; /* 移除代码块表格的外边距 */
+}
+
+figure.highlight .gutter pre {
+    background: #f9f9f9; /* 设置行号区域的背景颜色 */
+    color: #999999; /* 设置行号区域的字体颜色 */
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: right; /* 行号右对齐 */
+}
+
+figure.highlight .code pre {
+    padding-left: 10px; /* 设置代码内容区域的内边距 */
+}
+
+.hljs {
+    color: #586e75; /* 设置代码块的字体颜色 */
+    background: #fdf6e3; /* 设置代码块的背景颜色 */
+}
+
+.hljs-comment { color: #839496 } /* 注释的颜色 */
+.hljs-keyword { color: #6c71c4 } /* 关键字的颜色 */
+.hljs-string { color: #859900 } /* 字符串的颜色 */
+.hljs-number { color: #cb4b16 } /* 数字的颜色 */
+.hljs-function .hljs-title { color: #268bd2 } /* 函数名称的颜色 */
+.hljs-operator { color: #657b83 } /* 操作符的颜色 */
+.hljs-variable { color: #dc322f } /* 变量的颜色 */
+.hljs-tag { color: #657b83 } /* 标签的颜色 */
+
+.copy-btn {
+    color: var(--highlight-foreground);
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0; /* 默认隐藏复制按钮 */
+    padding: 2px 6px;
+    position: absolute;
+    right: 0;
+    top: 2px;
+    transition: opacity 0.2s ease-in-out; /* 透明度过渡效果 */
+}
+
+.highlight:hover .copy-btn,
+.code-container:hover .copy-btn {
+    opacity: 1; /* 当鼠标悬停时显示复制按钮 */
+}
+
+code {
+    border-radius: 3px;
+    font-size: 85%;
+    padding: 2px 4px;
+    overflow-wrap: break-word;
+}
+
+.post-body pre.hljs,
+.post-body code.hljs {
+    display: block;
+    padding: 1em;
+    margin: 1em 0;
+    overflow: auto;
+    border-radius: 5px;
+    background: var(--highlight-background);
+    color: var(--highlight-foreground);
 }
